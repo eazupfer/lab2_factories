@@ -1,10 +1,18 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+import json 
 from typing import Dict, Any, List
 from app.services.email_topic_inference import EmailTopicInferenceService
 from app.dataclasses import Email
+from app.features.factory import GENERATORS
 
 router = APIRouter()
+# TOPICS_FILE = Path("data/topic_keywords.json")
+TOPICS_FILE = "data/topic_keywords.json"
+
+# class Email(BaseModel):
+#     text: str
+#     ground_truth: str | None = None
 
 class EmailRequest(BaseModel):
     subject: str
@@ -24,6 +32,10 @@ class EmailClassificationResponse(BaseModel):
 class EmailAddResponse(BaseModel):
     message: str
     email_id: int
+    
+class Topic(BaseModel):
+    topic: str
+    description: str = "" #optional description
 
 @router.post("/emails/classify", response_model=EmailClassificationResponse)
 async def classify_email(request: EmailRequest):
@@ -43,7 +55,7 @@ async def classify_email(request: EmailRequest):
 
 @router.get("/topics")
 async def topics():
-    """Get available email topics"""
+    """Get available email topics for MLOps class"""
     inference_service = EmailTopicInferenceService()
     info = inference_service.get_pipeline_info()
     return {"topics": info["available_topics"]}
@@ -52,6 +64,40 @@ async def topics():
 async def pipeline_info():
     inference_service = EmailTopicInferenceService()
     return inference_service.get_pipeline_info()
+
+@router.get("/features")
+def features():
+    return str(GENERATORS.keys())
+    
+@router.post("/topics")
+def add_topic(new_topic: Topic):
+    #pass
+    # Load existing topics
+    try:
+        with open(TOPICS_FILE, "r") as f:
+            topics = json.load(f)
+    except FileNotFoundError:
+        topics = []
+
+    # Prevent duplicates
+    if new_topic.topic in topics:
+        raise HTTPException(status_code=400, detail="Topic already exists")
+
+    # # Add the new topic
+    #Changed from append to adding as key value pair
+#   topics.append(new_topic.topic)
+    topics[new_topic.topic] = {"description": new_topic.description}
+    
+
+    # # Save back to the file
+    with open(TOPICS_FILE, "w") as f:
+        json.dump(topics, f)
+
+    return {"message": "Topic added successfully", "topics": topics}
+
+
+    
+
 
 # TODO: LAB ASSIGNMENT - Part 2 of 2  
 # Create a GET endpoint at "/features" that returns information about all feature generators
