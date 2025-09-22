@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "subject": "testing again",
+    "body": "changed to define local Email class",
+    "ground_truth": "MLOps testing",
+    "embedding": [
+      49
+    ]
+  },
+  {
+    "subject": "OOO Vacation Plans",
+    "body": "Here is my plan for covering work while I'm vacation",
+    "ground_truth": "Personal",
+    "embedding": [
+      71
+    ]
+  },
+  {
+    "subject": "Huge Discount Coming Soon",
+    "body": "Rare circumstances that will earn a 50% discount are...",
+    "ground_truth": "promotion",
+    "embedding": [
+      81
+    ]
+  },
+  {
+    "subject": "Culture matters",
+    "body": "Ground rules reviewed for a healthy work culture",
+    "ground_truth": "work",
+    "embedding": [
+      64
+    ]
+  },
+  {
+    "subject": "Testing Results for current sprint",
+    "body": "Here is a summary of testing results and actions to consider for the next sprint",
+    "ground_truth": "MLOps testing",
+    "embedding": [
+      115
+    ]
+  },
+  {
+    "subject": "Membership or Rewards Program?",
+    "body": "Let's gather the marketing team to revisit the idea of a rewards or membership program",
+    "ground_truth": "promotion",
+    "embedding": [
+      117
+    ]
+  },
+  {
+    "subject": "A new email about MLOps testing",
+    "body": "This describes all the layers of the stack that need to be validated and tested ",
+    "embedding": [
+      0.0
+    ],
+    "ground_truth": "MLOps testing"
+  },
+  {
+    "subject": "Monday Morning Testing Protocols",
+    "body": "These test need to be run every Monday to make sure nothing went haywire over the weekend",
+    "ground_truth": "string",
+    "embedding": [
+      122
+    ]
+  },
+  {
+    "subject": "Monday Morning Testing Protocols",
+    "body": "These test need to be run every Monday to make sure nothing went haywire over the weekend",
+    "ground_truth": "MLOps testing",
+    "embedding": [
+      122
+    ]
+  }
+]

@@ -1,17 +1,1 @@
-from abc import ABC, abstractmethod
-from typing import Dict, Any
-from app.dataclasses import Email
-
-class BaseFeatureGenerator(ABC):
-    """Base class for all feature generators"""
-    
-    @abstractmethod
-    def generate_features(self, email: Email) -> Dict[str, Any]:
-        """Generate features from Email dataclass"""
-        pass
-    
-    @property
-    @abstractmethod
-    def feature_names(self) -> list[str]:
-        """Return list of feature names this generator produces"""
-        pass
+{"filter":false,"title":"base.py","tooltip":"/lab2_factories/app/features/base.py","undoManager":{"mark":-1,"position":-1,"stack":[]},"ace":{"folds":[],"scrolltop":0,"scrollleft":0,"selection":{"start":{"row":0,"column":0},"end":{"row":0,"column":0},"isBackwards":false},"options":{"guessTabSize":true,"useWrapMode":false,"wrapToView":true},"firstLineState":0},"timestamp":1757550714563,"hash":"d780a62144a7103b40e69cd82f42a114c53408fd"}

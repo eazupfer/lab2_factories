@@ -1,11 +1,1 @@
-from pydantic_settings import BaseSettings
-from typing import Optional
-
-class Settings(BaseSettings):
-    PROJECT_NAME: str = "ML Server"
-    DEBUG: bool = True
-    MODEL_PATH: Optional[str] = None
-    FEATURE_STORE_PATH: str = "data/"
-
-
-settings = Settings()
+{"filter":false,"title":"config.py","tooltip":"/lab2_factories/app/core/config.py","undoManager":{"mark":-1,"position":-1,"stack":[]},"ace":{"folds":[],"scrolltop":0,"scrollleft":0,"selection":{"start":{"row":0,"column":0},"end":{"row":0,"column":0},"isBackwards":false},"options":{"guessTabSize":true,"useWrapMode":false,"wrapToView":true},"firstLineState":0},"timestamp":1758391816194,"hash":"85f9602c69b60b5fc8e7c69de10a52f646d1afd4"}
